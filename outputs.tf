@@ -1,14 +1,13 @@
-output "betacloud-mirror" {
+output "betacloud" {
   value = [
-    for host in module.betacloud-mirror[*]:
+    for host in module.betacloud[*]:
       host.floating_ip
   ]
 }
 
-output "betacloud-vpn" {
+output "oracle" {
   value = [
-    for host in module.betacloud-vpn[*]:
-      host.floating_ip
+    for host in module.oracle[*]:
+      host.public_ip
   ]
 }
-

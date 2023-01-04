@@ -1,0 +1,1 @@
+variable "vnic_id" {}
