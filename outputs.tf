@@ -5,6 +5,13 @@ output "betacloud" {
   ]
 }
 
+output "pluscloudopen" {
+  value = [
+    for host in module.pluscloudopen[*]:
+      host.floating_ip
+  ]
+}
+
 output "oracle" {
   value = [
     for host in module.oracle[*]:

@@ -1,10 +1,17 @@
 terraform {
+  cloud {
+    organization = "tibeer"
+
+    workspaces {
+      name = "clouds"
+    }
+  }
   required_providers {
     aws = {
       source = "hashicorp/aws"
     }
     oci = {
-      source = "hashicorp/oci"
+      source = "oracle/oci"
     }
     openstack = {
       source = "terraform-provider-openstack/openstack"

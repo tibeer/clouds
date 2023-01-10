@@ -7,10 +7,25 @@ module "betacloud" {
   }
 
   name         = "instance-${count.index}"
-  flavor_name  = "SCS-4V:8:100"
+  flavor_name  = "2C-2GB-10GB"
   image_name   = "Ubuntu 20.04"
   fip_pool     = "external"
   network_name = "net-to-external-beermann"
+}
+
+module "pluscloudopen" {
+  source = "./modules/openstack_composed/vm_without_firewall"
+  count  = 1
+
+  providers = {
+    openstack = openstack.scs
+  }
+
+  name         = "instance-${count.index}"
+  flavor_name  = "SCS-2V:2:20"
+  image_name   = "Ubuntu 22.04"
+  fip_pool     = "ext01"
+  network_name = "p500924-beermann-network"
 }
 
 module "oracle" {
