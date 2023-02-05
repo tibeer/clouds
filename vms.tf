@@ -36,3 +36,11 @@ module "oracle" {
   tenant_id = local.oci_tenant_ids[0]
   ports     = [22, 80]
 }
+
+module "hetzner" {
+  source = "./modules/hetzner_composed/vm"
+  count  = 0
+
+  name        = "instance-${count.index}"
+  server_type = "cx21" # 2C-4GB-40GB
+}

@@ -1,6 +1,6 @@
 module "keypair" {
-  count  = var.key_pair == null ? 1 : 0
   source = "../../openstack_basic/compute_keypair_v2"
+  count  = var.key_pair == null ? 1 : 0
 
   name = var.name
 }
