@@ -24,7 +24,7 @@ module "instance" {
   nsg_ids             = module.secgroups.nsg_ids
   availability_domain = data.oci_identity_availability_domains.domains.availability_domains[random_integer.random.result].name
   tenant_id           = var.tenant_id
-  source_id           = local.arm_image[0]
+  source_id           = var.image == null ? local.arm_image[0] : var.image
 }
 
 # This does not work currently!
