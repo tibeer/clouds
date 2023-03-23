@@ -6,4 +6,5 @@ module "record" {
   zone_id = var.zone_id
   name    = each.key
   records = each.value
+  type    = var.type
 }

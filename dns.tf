@@ -1,8 +1,8 @@
 module "tibeerde" {
   source = "./modules/aws_composed/dns_zone"
 
-  zone    = "tibeer.de"
-  records = {
+  zone = "tibeer.de"
+  a_records = {
     "oracle" = ["130.61.179.205"]
   }
 }
@@ -10,6 +10,24 @@ module "tibeerde" {
 module "terraformbuchde" {
   source = "./modules/aws_composed/dns_zone"
 
-  zone    = "terraformbuch.de"
-  records = {}
+  zone = "terraformbuch.de"
+  a_records = {
+    "" = [
+      "185.199.108.153",
+      "185.199.109.153",
+      "185.199.110.153",
+      "185.199.111.153",
+    ]
+  }
+  aaaa_records = {
+    "" = [
+      "2606:50c0:8000::153",
+      "2606:50c0:8001::153",
+      "2606:50c0:8002::153",
+      "2606:50c0:8003::153",
+    ]
+  }
+  cname_records = {
+    "www" = ["terraformbuch.github.io"]
+  }
 }

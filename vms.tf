@@ -15,14 +15,14 @@ module "betacloud" {
 
 module "pluscloudopen" {
   source = "./modules/openstack_composed/vm_without_firewall"
-  count  = 0
+  count  = 1
 
   providers = {
     openstack = openstack.scs
   }
 
   name         = "instance-${count.index}"
-  flavor_name  = "SCS-2V:2:20"
+  flavor_name  = "SCS-4V:8:20"
   image_name   = "Ubuntu 22.04"
   fip_pool     = "ext01"
   network_name = "p500924-beermann-network"
