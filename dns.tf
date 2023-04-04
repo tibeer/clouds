@@ -3,7 +3,10 @@ module "tibeerde" {
 
   zone = "tibeer.de"
   a_records = {
-    "oracle" = ["130.61.179.205"]
+    "oracle" = [
+      for host in module.oracle[*]:
+        host.public_ip
+    ]
   }
 }
 

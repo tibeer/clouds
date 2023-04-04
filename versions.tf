@@ -34,3 +34,7 @@ provider "openstack" {
   cloud = "beermann"
   alias = "betacloud"
 }
+
+provider "hcloud" {
+  token = "0000000000000000000000000000000000000000000000000000000000000000"
+}

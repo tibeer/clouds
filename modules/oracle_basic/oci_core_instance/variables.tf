@@ -13,7 +13,7 @@ variable "shape_config" {
 }
 
 variable "key_pair" {
-  default = "~/.ssh/id_rsa.pub"
+  default = "~/.ssh/id_ed25519.pub"
 }
 
 variable "source_type" {
