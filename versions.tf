@@ -10,6 +10,9 @@ terraform {
     aws = {
       source = "hashicorp/aws"
     }
+    hcloud = {
+      source = "hetznercloud/hcloud"
+    }
     oci = {
       source = "oracle/oci"
     }
