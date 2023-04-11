@@ -35,7 +35,7 @@ provider "openstack" {
 
 provider "openstack" {
   cloud = "beermann"
-  alias = "betacloud"
+  alias = "regiocloud"
 }
 
 provider "hcloud" {

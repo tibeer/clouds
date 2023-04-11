@@ -1,16 +1,16 @@
-module "betacloud" {
+module "regiocloud" {
   source = "./modules/openstack_composed/vm_without_firewall"
-  count  = 0
+  count  = 1
 
   providers = {
-    openstack = openstack.betacloud
+    openstack = openstack.regiocloud
   }
 
   name         = "instance-${count.index}"
-  flavor_name  = "2C-2GB-10GB"
-  image_name   = "Ubuntu 20.04"
-  fip_pool     = "external"
-  network_name = "net-to-external-beermann"
+  flavor_name  = "SCS-4V-8-50"
+  image_name   = "Ubuntu 22.04"
+  fip_pool     = "public"
+  network_name = "vanilla"
 }
 
 module "pluscloudopen" {

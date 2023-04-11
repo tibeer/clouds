@@ -1,6 +1,6 @@
-output "betacloud" {
+output "regiocloud" {
   value = [
-    for host in module.betacloud[*]:
+    for host in module.regiocloud[*]:
       host.floating_ip
   ]
 }
