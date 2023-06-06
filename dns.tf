@@ -8,6 +8,11 @@ module "tibeerde" {
         host.public_ip
     ]
   }
+  aaaa_records = {
+    "ipv6test" = [
+      "2a01:4f8:c012:bab0::1"
+    ]
+  }
 }
 
 module "terraformbuchde" {
