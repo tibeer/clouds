@@ -16,8 +16,8 @@ module "instance" {
   # maximum possible configuration 
   shape_name   = "VM.Standard.A1.Flex"
   shape_config = {
-    memory = 24
     cpus   = 4
+    memory = 24
   }
   boot_bolume_size    = 200
   subnet_id           = data.oci_core_subnets.subnets.subnets[0].id
@@ -27,17 +27,15 @@ module "instance" {
   source_id           = var.image == null ? local.arm_image[0] : var.image
 }
 
-# This does not work currently!
-#module "ipv6_vnic" {
-#  source = "../../oracle_basic/oci_core_vnic_attachment"
-#
-#  instance_id = module.instance.id
-#  subnet_id   = data.oci_core_subnets.subnets.subnets[0].id
-#  nsg_ids     = module.secgroups.nsg_ids
-#}
-#
-#module "ipv6_address" {
-#  source = "../../oracle_basic/oci_core_ipv6"
-#
-#  vnic_id = module.ipv6_vnic.vnic_id
-#}
+module "instance_vnic" {
+  source = "../../oracle_basic/oci_core_vnic_attachment_data"
+
+  instance_id = module.instance.id
+  tenant_id   = var.tenant_id
+}
+
+module "ipv6_address" {
+  source = "../../oracle_basic/oci_core_ipv6"
+
+  vnic_id = module.instance_vnic.vnic_attachments[0].vnic_id
+}

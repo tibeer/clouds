@@ -12,9 +12,16 @@ output "pluscloudopen" {
   ]
 }
 
-output "oracle" {
+output "oracle_ipv4" {
   value = [
     for host in module.oracle[*]:
-      host.public_ip
+      host.public_ipv4
+  ]
+}
+
+output "oracle_ipv6" {
+  value = [
+    for host in module.oracle[*]:
+      host.public_ipv6
   ]
 }

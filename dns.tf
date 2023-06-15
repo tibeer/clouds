@@ -5,12 +5,13 @@ module "tibeerde" {
   a_records = {
     "oracle" = [
       for host in module.oracle[*]:
-        host.public_ip
+        host.public_ipv4
     ]
   }
   aaaa_records = {
-    "ipv6test" = [
-      "2a01:4f8:c012:bab0::1"
+    "oracle" = [
+      for host in module.oracle[*]:
+        host.public_ipv6
     ]
   }
 }
