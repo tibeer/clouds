@@ -34,7 +34,7 @@ module "oracle" {
 
   name      = "free-${count.index}"
   tenant_id = local.oci_tenant_ids[0]
-  ports     = [22, 80, 443]
+  ports     = [22, 80, 443, 6443, 9443]
   image     = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaad4jmvm7g54i3ur53o5pxfq4mfxem5eno24far7reitmnnqziyyga"
 }
 
@@ -43,5 +43,8 @@ module "hetzner" {
   count  = 0
 
   name        = "instance-${count.index}"
-  server_type = "cx21" # 2C-4GB-40GB
+  #server_type = "cx21" # 2C-4GB-40GB
+  server_type = "cax11" # 2C-4GB-40GB
+  location    = "fsn1"
+  image       = "debian-12"
 }
