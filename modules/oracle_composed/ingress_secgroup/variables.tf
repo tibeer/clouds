@@ -10,13 +10,6 @@ variable "protocol" {
   # 58 = ICMPv6
 }
 
-# either (port) or (from_port, to_port) have to be set
-variable "port" {
-  default = null
-}
-variable "from_port" {
-  default = null
-}
-variable "to_port" {
+variable "ports" {
   default = null
 }

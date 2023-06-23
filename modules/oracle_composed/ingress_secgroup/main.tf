@@ -8,12 +8,13 @@ module "secgroup" {
 
 module "scgroup_rule_ipv4_ingress" {
   source = "../../oracle_basic/oci_core_network_security_group_security_rule"
+  #count  = length(var.ports)
 
   nsg_id = module.secgroup.id
   direction = "INGRESS"
   protocol  = var.protocol
-  from_port = var.port == null ? var.from_port : var.port
-  to_port   = var.port == null ? var.to_port : var.port
+  from_port = 1
+  to_port   = 65535
   is_ipv6_rule = false
 }
 
@@ -28,12 +29,13 @@ module "secgroup_rule_ipv4_egress" {
 
 module "secgroup_rule_ipv6_ingress" {
   source = "../../oracle_basic/oci_core_network_security_group_security_rule"
+  #count  = length(var.ports)
 
   nsg_id = module.secgroup.id
   direction = "INGRESS"
   protocol  = var.protocol
-  from_port = var.port == null ? var.from_port : var.port
-  to_port   = var.port == null ? var.to_port : var.port
+  from_port = 1
+  to_port   = 65535
   is_ipv6_rule = true
 }
 

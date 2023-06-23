@@ -1,10 +1,20 @@
-module "secgroups" {
-  source = "../ingress_secgroups"
+module "secgroup_tcp" {
+  source = "../ingress_secgroup"
 
   vcn_id    = data.oci_core_vcns.vcns.virtual_networks[0].id
   name      = "all"
   tenant_id = var.tenant_id
   protocol  = 6
+  ports     = var.ports
+}
+
+module "secgroup_udp" {
+  source = "../ingress_secgroup"
+
+  vcn_id    = data.oci_core_vcns.vcns.virtual_networks[0].id
+  name      = "all"
+  tenant_id = var.tenant_id
+  protocol  = 17
   ports     = var.ports
 }
 
@@ -21,7 +31,7 @@ module "instance" {
   }
   boot_bolume_size    = 200
   subnet_id           = data.oci_core_subnets.subnets.subnets[0].id
-  nsg_ids             = module.secgroups.nsg_ids
+  nsg_ids             = [module.secgroup_tcp.id, module.secgroup_udp.id]
   availability_domain = data.oci_identity_availability_domains.domains.availability_domains[random_integer.random.result].name
   tenant_id           = var.tenant_id
   source_id           = var.image == null ? local.arm_image[0] : var.image

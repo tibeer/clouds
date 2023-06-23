@@ -1,6 +1,6 @@
 module "regiocloud" {
-  source = "./modules/openstack_composed/vm_without_firewall"
   count  = 0
+  source = "./modules/openstack_composed/vm_without_firewall"
 
   providers = {
     openstack = openstack.regiocloud
@@ -14,8 +14,8 @@ module "regiocloud" {
 }
 
 module "pluscloudopen" {
-  source = "./modules/openstack_composed/vm_without_firewall"
   count  = 0
+  source = "./modules/openstack_composed/vm_without_firewall"
 
   providers = {
     openstack = openstack.scs
@@ -29,18 +29,21 @@ module "pluscloudopen" {
 }
 
 module "oracle" {
+  # do not increase, otherwise it will cost money!
+  # do not reduce, otherwise you will loose data!
+  count  = 1
   source = "./modules/oracle_composed/free_arm_vm"
-  count  = 1 # do not change, otherwise it will cost money!
 
   name      = "free-${count.index}"
   tenant_id = local.oci_tenant_ids[0]
-  ports     = [22, 80, 443, 6443, 9443]
+  #ports     = [22, 80, 443, 6443, 7472, 7946]
+  ports     = []
   image     = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaad4jmvm7g54i3ur53o5pxfq4mfxem5eno24far7reitmnnqziyyga"
 }
 
 module "hetzner" {
-  source = "./modules/hetzner_composed/vm"
   count  = 0
+  source = "./modules/hetzner_composed/vm"
 
   name        = "instance-${count.index}"
   #server_type = "cx21" # 2C-4GB-40GB
