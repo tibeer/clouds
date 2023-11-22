@@ -1,14 +1,28 @@
-output "regiocloud" {
+#output "regiocloud" {
+#  value = [
+#    for host in module.regiocloud[*]:
+#      host.floating_ip
+#  ]
+#}
+#
+#output "pluscloudopen" {
+#  value = [
+#    for host in module.pluscloudopen[*]:
+#      host.floating_ip
+#  ]
+#}
+
+output "hetzner_ipv4" {
   value = [
-    for host in module.regiocloud[*]:
-      host.floating_ip
+    for host in module.hetzner[*]:
+      host.ipv4_address
   ]
 }
 
-output "pluscloudopen" {
+output "hetzner_ipv6" {
   value = [
-    for host in module.pluscloudopen[*]:
-      host.floating_ip
+    for host in module.hetzner[*]:
+      host.ipv6_address
   ]
 }
 
