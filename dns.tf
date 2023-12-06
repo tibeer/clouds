@@ -1,3 +1,11 @@
+#variable "gardener" {
+#  default = "167.235.219.201"
+#}
+#
+#variable "timgardener" {
+#  default = "128.140.24.153"
+#}
+
 module "tibeerde" {
   source = "./modules/aws_composed/dns_zone"
 
@@ -6,37 +14,26 @@ module "tibeerde" {
     "oracle" = [
       for host in module.oracle[*]:
         host.public_ipv4
-    ]
+    ],
+    "*.oracle" = [
+      for host in module.oracle[*]:
+        host.public_ipv4
+    ],
+    "kamaji" = ["67.235.216.66"]
+    "*.kamaji" = ["67.235.216.66"],
+#    "gardener"      = [var.gardener],
+#    "*.gardener"    = [var.gardener],
+#    "timgardener"   = [var.timgardener],
+#    "*.timgardener" = [var.timgardener]
   }
   aaaa_records = {
     "oracle" = [
       for host in module.oracle[*]:
         host.public_ipv6
-    ]
-  }
-}
-
-module "terraformbuchde" {
-  source = "./modules/aws_composed/dns_zone"
-
-  zone = "terraformbuch.de"
-  a_records = {
-    "" = [
-      "185.199.108.153",
-      "185.199.109.153",
-      "185.199.110.153",
-      "185.199.111.153",
-    ]
-  }
-  aaaa_records = {
-    "" = [
-      "2606:50c0:8000::153",
-      "2606:50c0:8001::153",
-      "2606:50c0:8002::153",
-      "2606:50c0:8003::153",
-    ]
-  }
-  cname_records = {
-    "www" = ["terraformbuch.github.io"]
+    ],
+    "*.oracle" = [
+      for host in module.oracle[*]:
+        host.public_ipv6
+    ],
   }
 }
