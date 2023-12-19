@@ -17,6 +17,6 @@ resource "oci_core_instance" "instance" {
     nsg_ids   = var.nsg_ids
   }
   metadata = {
-    ssh_authorized_keys = file(pathexpand(var.key_pair))
+    ssh_authorized_keys = var.key_pair
   }
 }

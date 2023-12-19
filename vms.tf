@@ -10,6 +10,7 @@ module "oracle" {
   ports     = []
   #image     = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaad4jmvm7g54i3ur53o5pxfq4mfxem5eno24far7reitmnnqziyyga"
   image     = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaamz33pxpdxvdi5lkmhux6v6sbmysrho6jt4aqrtvhrjjganqadxta"
+  key_pair  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEajn0QbV2hw6yr8wuauKJlzqcRfCFx7TcVpH5UdlddA tibeer@outlook.de\n"
 }
 
 module "hetzner" {
