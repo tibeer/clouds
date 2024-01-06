@@ -44,3 +44,12 @@ module "cname_records" {
   records = var.cname_records
   type    = "CNAME"
 }
+
+module "caa_records" {
+  source = "../dns_records"
+
+  zone    = var.zone
+  zone_id = module.zone.zone_id
+  records = var.caa_records
+  type    = "CAA"
+}

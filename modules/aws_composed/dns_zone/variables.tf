@@ -14,3 +14,8 @@ variable "cname_records" {
   default = {}
   type    = map(any)
 }
+
+variable "caa_records" {
+  default = {}
+  type    = map(any)
+}
