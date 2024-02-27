@@ -8,6 +8,10 @@ module "tibeerde" {
     ]
   }
   a_records = {
+    "" = [
+      for host in module.oracle[*] :
+        host.public_ipv4
+    ],
     "oracle" = [
       for host in module.oracle[*] :
         host.public_ipv4
@@ -18,6 +22,10 @@ module "tibeerde" {
     ],
   }
   aaaa_records = {
+    "" = [
+      for host in module.oracle[*] :
+        host.public_ipv6
+    ],
     "oracle" = [
       for host in module.oracle[*] :
         host.public_ipv6
