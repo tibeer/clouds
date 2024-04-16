@@ -10,6 +10,9 @@ terraform {
     aws = {
       source = "hashicorp/aws"
     }
+    equinix = {
+      source = "equinix/equinix"
+    }
     hcloud = {
       source = "hetznercloud/hcloud"
     }
@@ -26,6 +29,8 @@ terraform {
 }
 
 provider "aws" {}
+provider "equinix" {}
+provider "hcloud" {}
 provider "oci" {}
 
 provider "openstack" {
@@ -36,9 +41,4 @@ provider "openstack" {
 provider "openstack" {
   cloud = "beermann"
   alias = "regiocloud"
-}
-
-provider "hcloud" {
-  # Now derived from HCLOUD_TOKEN environment variable
-  #token = "0000000000000000000000000000000000000000000000000000000000000000"
 }

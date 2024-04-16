@@ -22,3 +22,11 @@ module "hetzner" {
   location    = "fsn1"
   image       = "ubuntu-22.04"
 }
+
+module "equinix" {
+  count  = 0
+  source = "./modules/equinix_composed/testing_env"
+
+  name     = "instance-${count.index}"
+  org_name = "tibeer"
+}
