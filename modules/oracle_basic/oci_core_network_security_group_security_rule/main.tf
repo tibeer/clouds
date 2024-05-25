@@ -10,10 +10,10 @@ resource "oci_core_network_security_group_security_rule" "secgroup_rule" {
   protocol                  = var.protocol
 
   source_type = var.direction == "INGRESS" ? "CIDR_BLOCK" : null
-  source = var.is_ipv6_rule ? "::/0" : "0.0.0.0/0"
+  source      = var.is_ipv6_rule ? "::/0" : "0.0.0.0/0"
 
   destination_type = var.direction == "EGRESS" ? "CIDR_BLOCK" : null
-  destination = var.is_ipv6_rule ? "::/0" : "0.0.0.0/0"
+  destination      = var.is_ipv6_rule ? "::/0" : "0.0.0.0/0"
 
   dynamic "icmp_options" {
     for_each = local.icmp_options
@@ -26,7 +26,7 @@ resource "oci_core_network_security_group_security_rule" "secgroup_rule" {
   dynamic "tcp_options" {
     for_each = local.tcp_options
     content {
-      destination_port_range{
+      destination_port_range {
         min = var.from_port
         max = var.to_port
       }
@@ -36,7 +36,7 @@ resource "oci_core_network_security_group_security_rule" "secgroup_rule" {
   dynamic "udp_options" {
     for_each = local.udp_options
     content {
-      destination_port_range{
+      destination_port_range {
         min = var.from_port
         max = var.to_port
       }

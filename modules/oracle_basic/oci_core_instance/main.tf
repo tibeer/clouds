@@ -1,4 +1,10 @@
 resource "oci_core_instance" "instance" {
+  lifecycle {
+    ignore_changes = [
+      source_details
+    ]
+  }
+
   availability_domain = var.availability_domain
   compartment_id      = var.tenant_id
   shape               = var.shape_name
