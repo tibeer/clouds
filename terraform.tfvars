@@ -1,2 +1,2 @@
 enable_oracle_prod = true
-enable_oracle_beta = false
+enable_oracle_beta = true

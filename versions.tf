@@ -47,13 +47,3 @@ provider "oci" {
   alias               = "beta"
   config_file_profile = "BETA"
 }
-
-provider "openstack" {
-  cloud = "scs-community-beermann"
-  alias = "scs"
-}
-
-provider "openstack" {
-  cloud = "beermann"
-  alias = "regiocloud"
-}
