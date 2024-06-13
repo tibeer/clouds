@@ -18,6 +18,9 @@ terraform {
     equinix = {
       source = "equinix/equinix"
     }
+    google = {
+      source = "hashicorp/google"
+    }
     hcloud = {
       source = "hetznercloud/hcloud"
     }
@@ -46,4 +49,10 @@ provider "oci" {
 provider "oci" {
   alias               = "beta"
   config_file_profile = "BETA"
+}
+
+provider "google" {
+  project = "tibeer"
+  region  = "us-central1"
+  zone    = "us-central1-b"
 }

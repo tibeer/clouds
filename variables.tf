@@ -10,3 +10,6 @@ variable "enable_hetzner" {
 variable "enable_equinix" {
   default = false
 }
+variable "enable_google" {
+  default = false
+}

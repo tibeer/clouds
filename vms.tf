@@ -23,7 +23,7 @@ module "oracle_beta" {
     oci = oci.beta
   }
 
-  name      = "free-${count.index}"
+  name      = "beta-${count.index}"
   tenant_id = jsondecode(data.config_ini.cfg_oracle_beta.json)["tenancy"]
   ports     = []
 }
@@ -44,4 +44,11 @@ module "equinix" {
 
   name     = "instance-${count.index}"
   org_name = "tibeer"
+}
+
+module "google" {
+  count  = var.enable_google ? 1 : 0
+  source = "./modules/google_composed/free_vm"
+
+  name = "instance-${count.index}"
 }
