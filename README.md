@@ -30,3 +30,7 @@ tf -.->|not in use| equinix
 tf -.->|not in use| openstack
 tf -.->|hah, lol| azure
 ```
+
+## rDNS/PTR with Google Cloud
+
+In order to run your own mailserver, you need to add a PTR DNS record.

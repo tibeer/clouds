@@ -1,7 +1,7 @@
 module "tibeerde" {
   source = "./modules/aws_composed/dns_zone"
 
-  zone = "tibeer.de"
+  zone = var.dns_zone
   a_records = {
     "" = [
       for host in module.oracle_prod[*] :
@@ -39,14 +39,14 @@ module "tibeerde" {
       for host in module.equinix[*] :
       host.public_ipv4
     ],
-    "google" = [
-      for host in module.google[*] :
-      host.public_ipv4
-    ],
-    "*.google" = [
-      for host in module.google[*] :
-      host.public_ipv4
-    ],
+    #"google" = [
+    #  for host in module.google[*] :
+    #  host.public_ipv4
+    #],
+    #"*.google" = [
+    #  for host in module.google[*] :
+    #  host.public_ipv4
+    #],
   }
   aaaa_records = {
     "" = [

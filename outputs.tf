@@ -26,12 +26,12 @@ output "oracle_prod_ipv6" {
   ]
 }
 
-output "google_ipv4" {
-  value = [
-    for host in module.google[*] :
-    host.public_ipv4
-  ]
-}
+#output "google_ipv4" {
+#  value = [
+#    for host in module.google[*] :
+#    host.public_ipv4
+#  ]
+#}
 
 output "google_ipv6" {
   value = [

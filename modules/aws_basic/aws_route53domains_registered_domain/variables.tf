@@ -1,6 +1,4 @@
-variable "domain_name" {
-  default = "tibeer.de"
-}
+variable "domain_name" {}
 
 variable "name_servers" {
   default = [

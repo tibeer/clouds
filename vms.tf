@@ -33,7 +33,7 @@ module "hetzner" {
   source = "./modules/hetzner_composed/vm"
 
   name        = "instance-${count.index}"
-  server_type = "cpx41"
+  server_type = "cax11"
   location    = "fsn1"
   image       = "ubuntu-22.04"
 }
@@ -50,5 +50,6 @@ module "google" {
   count  = var.enable_google ? 1 : 0
   source = "./modules/google_composed/free_vm"
 
-  name = "instance-${count.index}"
+  name                   = "instance-${count.index}"
+  public_ptr_domain_name = "google.${var.dns_zone}"
 }

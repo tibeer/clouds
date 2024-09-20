@@ -1,3 +1,4 @@
+variable "dns_zone" {}
 variable "enable_oracle_prod" {
   default = false
 }

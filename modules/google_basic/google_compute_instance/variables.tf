@@ -12,3 +12,6 @@ variable "key_pair" {
 variable "image" {
   default = "debian-cloud/debian-12"
 }
+variable "public_ptr_domain_name" {
+  default = null  
+}
