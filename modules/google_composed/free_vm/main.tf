@@ -77,6 +77,10 @@ module "network" {
   ]
 }
 
+resource "google_compute_address" "static" {
+  name = var.name
+}
+
 module "instance" {
   source = "../../google_basic/google_compute_instance"
 
@@ -85,6 +89,7 @@ module "instance" {
   disk_size              = var.disk_size
   network                = module.network.network_name
   subnetwork             = module.network.subnets_names[0]
+  nat_ip                 = google_compute_address.static.address
   username               = var.username
   key_pair               = var.key_pair == null ? file(pathexpand(var.key_pair_path)) : var.key_pair
   public_ptr_domain_name = var.public_ptr_domain_name

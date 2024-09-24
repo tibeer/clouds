@@ -34,3 +34,11 @@ tf -.->|hah, lol| azure
 ## rDNS/PTR with Google Cloud
 
 In order to run your own mailserver, you need to add a PTR DNS record.
+Assuming your Domain ist bought by some different entity than google, you have
+to add the domain to the google search engine and verify the ownership.
+But this is not enough, you also have to add a user account to the domain ownership:
+
+Go into the IAM console in the web-ui and search for the participal, that is tied
+to the _Compute Engine default service account_. Copy the mail address and go back
+to the search console and add this user as __OWNER__. Everything else will not work
+with terraform.

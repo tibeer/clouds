@@ -19,13 +19,10 @@ resource "google_compute_instance" "instance" {
     stack_type = "IPV4_IPV6"
 
     # generate an ephemeral public IPv4 address
-    #access_config {
-    #  nat_ip                 = null
-    #  # Info: a public_ptr_domain_name cannot be used in combination with an ephemeral IP
-    #  # In order to set this record, you need to reserve an address upfront. Since this would
-    #  # generate cost and I am stingy, the instance will only get an IPv6 address.
-    #  #public_ptr_domain_name = "${var.public_ptr_domain_name}."
-    #}
+    access_config {
+      nat_ip                 = var.nat_ip
+      public_ptr_domain_name = "${var.public_ptr_domain_name}."
+    }
     # generate an ephemeral public IPv6 address
     ipv6_access_config {
       # STANDARD is not working, PREMIUM is required for an unknown reason

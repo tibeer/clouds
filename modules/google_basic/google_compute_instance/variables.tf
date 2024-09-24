@@ -3,6 +3,7 @@ variable "disk_size" {}
 variable "machine_type" {}
 variable "network" {}
 variable "subnetwork" {}
+variable "nat_ip" {}
 variable "username" {
   default = "tux"
 }
