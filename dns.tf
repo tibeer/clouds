@@ -39,14 +39,14 @@ module "tibeerde" {
       for host in module.equinix[*] :
       host.public_ipv4
     ],
-    #"google" = [
-    #  for host in module.google[*] :
-    #  host.public_ipv4
-    #],
-    #"*.google" = [
-    #  for host in module.google[*] :
-    #  host.public_ipv4
-    #],
+    "google" = [
+      for host in module.google[*] :
+      host.public_ipv4
+    ],
+    "*.google" = [
+      for host in module.google[*] :
+      host.public_ipv4
+    ],
   }
   aaaa_records = {
     "" = [
