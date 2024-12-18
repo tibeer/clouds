@@ -9,7 +9,7 @@ variable "key_pair_path" {
   default = "~/.ssh/id_ed25519.pub"
 }
 
-variable "image" {
+variable "image_version" {
   default = null
 }
 

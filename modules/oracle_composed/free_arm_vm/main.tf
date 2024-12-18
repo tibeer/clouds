@@ -76,7 +76,7 @@ module "instance" {
   nsg_ids             = [module.secgroup.id]
   availability_domain = data.oci_identity_availability_domains.domains.availability_domains[random_integer.random.result].name
   tenant_id           = var.tenant_id
-  source_id           = var.image == null ? local.arm_image[0] : var.image
+  source_id           = local.arm_image[0] # first is always the newest
   key_pair            = var.key_pair == null ? file(pathexpand(var.key_pair_path)) : var.key_pair
 }
 

@@ -1,7 +1,8 @@
 resource "oci_core_instance" "instance" {
   lifecycle {
     ignore_changes = [
-      source_details
+      source_details[0].source_id,
+      source_details[0].source_type,
     ]
   }
 

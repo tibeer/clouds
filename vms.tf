@@ -8,9 +8,10 @@ module "oracle_prod" {
     oci = oci.prod
   }
 
-  name      = "free-${count.index}"
-  tenant_id = jsondecode(data.config_ini.cfg_oracle_prod.json)["tenancy"]
-  ports     = []
+  name          = "prod-${count.index}"
+  tenant_id     = jsondecode(data.config_ini.cfg_oracle_prod.json)["tenancy"]
+  image_version = "22.04"
+  ports         = []
 }
 
 module "oracle_beta" {
@@ -23,9 +24,10 @@ module "oracle_beta" {
     oci = oci.beta
   }
 
-  name      = "beta-${count.index}"
-  tenant_id = jsondecode(data.config_ini.cfg_oracle_beta.json)["tenancy"]
-  ports     = []
+  name          = "beta-${count.index}"
+  tenant_id     = jsondecode(data.config_ini.cfg_oracle_beta.json)["tenancy"]
+  image_version = "22.04"
+  ports         = []
 }
 
 module "hetzner" {

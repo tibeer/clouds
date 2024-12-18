@@ -7,11 +7,15 @@ module "tibeerde" {
       for host in module.oracle_prod[*] :
       host.public_ipv4
     ],
-    "oracle" = [
+    "www" = [
       for host in module.oracle_prod[*] :
       host.public_ipv4
     ],
-    "*.oracle" = [
+    "cloud" = [
+      for host in module.oracle_prod[*] :
+      host.public_ipv4
+    ],
+    "*.cloud" = [
       for host in module.oracle_prod[*] :
       host.public_ipv4
     ],
@@ -53,11 +57,15 @@ module "tibeerde" {
       for host in module.oracle_prod[*] :
       host.public_ipv6
     ],
-    "oracle" = [
+    "www" = [
       for host in module.oracle_prod[*] :
       host.public_ipv6
     ],
-    "*.oracle" = [
+    "cloud" = [
+      for host in module.oracle_prod[*] :
+      host.public_ipv6
+    ],
+    "*.cloud" = [
       for host in module.oracle_prod[*] :
       host.public_ipv6
     ],
