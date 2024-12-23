@@ -17,3 +17,15 @@ variable "ports" {
   type    = list(any)
   default = [22]
 }
+
+variable "cpus" {
+  default = 4
+}
+
+variable "memory" {
+  default = 24
+}
+
+variable "boot_bolume_size" {
+  default = 200
+}

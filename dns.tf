@@ -19,12 +19,20 @@ module "tibeerde" {
       for host in module.oracle_prod[*] :
       host.public_ipv4
     ],
-    "beta" = [
+    "node0" = [
       for host in module.oracle_beta[*] :
       host.public_ipv4
     ],
-    "*.beta" = [
+    "*.node0" = [
       for host in module.oracle_beta[*] :
+      host.public_ipv4
+    ],
+    "node1" = [
+      for host in module.oracle_beta2[*] :
+      host.public_ipv4
+    ],
+    "*.node1" = [
+      for host in module.oracle_beta2[*] :
       host.public_ipv4
     ],
     "hetzner" = [
@@ -69,12 +77,20 @@ module "tibeerde" {
       for host in module.oracle_prod[*] :
       host.public_ipv6
     ],
-    "beta" = [
+    "node0" = [
       for host in module.oracle_beta[*] :
       host.public_ipv6
     ],
-    "*.beta" = [
+    "*.node0" = [
       for host in module.oracle_beta[*] :
+      host.public_ipv6
+    ],
+    "node1" = [
+      for host in module.oracle_beta2[*] :
+      host.public_ipv6
+    ],
+    "*.node1" = [
+      for host in module.oracle_beta2[*] :
       host.public_ipv6
     ],
     "hetzner" = [

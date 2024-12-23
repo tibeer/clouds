@@ -68,10 +68,10 @@ module "instance" {
   # maximum possible configuration 
   shape_name = "VM.Standard.A1.Flex"
   shape_config = {
-    cpus   = 4
-    memory = 24
+    cpus   = var.cpus
+    memory = var.memory
   }
-  boot_bolume_size    = 200
+  boot_bolume_size    = var.boot_bolume_size
   subnet_id           = oci_core_subnet.subnet.id
   nsg_ids             = [module.secgroup.id]
   availability_domain = data.oci_identity_availability_domains.domains.availability_domains[random_integer.random.result].name
